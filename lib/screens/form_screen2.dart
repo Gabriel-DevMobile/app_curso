@@ -1,93 +1,103 @@
 import 'package:flutter/material.dart';
 
-class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+class ScreenPageTest extends StatefulWidget {
+  const ScreenPageTest({super.key});
 
   @override
-  State<FormScreen> createState() => _FormScreenState();
+  State<ScreenPageTest> createState() => _ScreenPageTestState();
 }
 
-class _FormScreenState extends State<FormScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController difficultyController = TextEditingController();
-  TextEditingController imageController = TextEditingController();
-
+class _ScreenPageTestState extends State<ScreenPageTest> {
+  TextEditingController controleNome = TextEditingController();
+  TextEditingController controleDificuldade = TextEditingController();
+  TextEditingController controleImagem = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nova Tarefa'),
+        backgroundColor: Colors.black,
+        leading: const Icon(
+          Icons.add_task_sharp,
+          color: Colors.amber,
+          size: 30,
+        ),
+        title: const Text(
+          'Adicionar uma nova tarefa',
+          style: TextStyle(
+            color: Colors.amber,
+          ),
+        ),
       ),
       body: Center(
         child: Container(
-          height: 780,
           width: 375,
+          height: 750,
           decoration: BoxDecoration(
-            color: Colors.black12,
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(width: 1),
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              width: 0.5,
+              color: Colors.black,
+            ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              //nome
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: nameController,
+                  controller: controleNome,
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Nome',
-                    fillColor: Colors.white70,
+                    hintText: 'Digite seu Nome',
+                    fillColor: Colors.white,
                     filled: true,
                   ),
                 ),
               ),
+              //dificuldade
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: difficultyController,
+                  controller: controleDificuldade,
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Dificuldade',
-                    fillColor: Colors.white70,
+                    fillColor: Colors.white,
                     filled: true,
                   ),
                 ),
               ),
+              //imagem
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   onChanged: (text) {
                     setState(() {});
                   },
-                  controller: imageController,
+                  controller: controleImagem,
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Imagem',
-                    fillColor: Colors.white70,
+                    fillColor: Colors.white,
                     filled: true,
                   ),
                 ),
               ),
               Container(
-                width: 72,
-                height: 100,
+                width: 180,
+                height: 150,
                 decoration: BoxDecoration(
-                  color: Colors.blueAccent,
+                  color: Colors.grey,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.blue,
-                  ),
+                  border: Border.all(width: 0.5, color: Colors.black),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    imageController.text,
+                    controleImagem.text,
                     errorBuilder: (BuildContext context, Object exception,
                         StackTrace? stackTrace) {
                       return Image.asset('assets/images/noPhoto.png');
@@ -96,15 +106,17 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
               ),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
-                  print(nameController.text);
-                  print(int.parse(difficultyController.text));
-                  print(imageController.text);
+                  // ignore: avoid_print
+                  print(controleNome.text);
+                  // ignore: avoid_print
+                  print(int.parse(controleDificuldade.text));
+                  // ignore: avoid_print
+                  print(controleImagem.text);
                 },
-                child: const Text(
-                  'Adicionar',
-                ),
+                icon: const Icon(Icons.touch_app_sharp),
+                label: const Text('Adicionar'),
               ),
             ],
           ),
