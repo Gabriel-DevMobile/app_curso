@@ -1,5 +1,8 @@
-import 'package:app_curso/components/difficulty.dart';
+// ignore: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
+
+import 'difficulty.dart';
 
 class Task extends StatefulWidget {
   final String nome;
@@ -83,10 +86,10 @@ class _TaskState extends State<Task> {
                           overlayColor: MaterialStateProperty.resolveWith(
                               (states) => const Color.fromARGB(192, 7, 7, 7)),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
+                          children: [
                             Icon(Icons.arrow_drop_up),
                             Text(
                               'Up',

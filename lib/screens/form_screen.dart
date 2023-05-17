@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class FormScreen extends StatefulWidget {
@@ -23,7 +25,7 @@ class _FormScreenState extends State<FormScreen> {
           height: 780,
           width: 375,
           decoration: BoxDecoration(
-            color: Colors.black12,
+            color: Colors.black,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(width: 1),
           ),
